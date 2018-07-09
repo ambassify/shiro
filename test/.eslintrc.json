@@ -1,0 +1,10 @@
+{
+    "extends": [
+        "eslint-config-ambassify/mocha"
+    ],
+    "rules": {
+        "node/no-unpublished-require": [
+            0
+        ]
+    }
+}

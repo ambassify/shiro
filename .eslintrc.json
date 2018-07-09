@@ -1,0 +1,16 @@
+{
+    "root": true,
+    "extends": [
+        "eslint-config-ambassify/node"
+    ],
+    "parserOptions": {
+        "sourceType": "script",
+        "ecmaVersion": 6
+    },
+    "rules": {
+        "strict": [
+            2,
+            "global"
+        ]
+    }
+}

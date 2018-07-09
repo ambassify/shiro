@@ -1,0 +1,35 @@
+{
+  "name": "@ambassify/shiro",
+  "version": "0.0.0",
+  "description": "Shiro permission checks in Node.JS",
+  "main": "index.js",
+  "engines": {
+    "node": "8.x.x"
+  },
+  "scripts": {
+    "test": "npm run test:lint && npm run test:unit",
+    "test:lint": "eslint --fix .",
+    "test:unit": "nyc mocha --recursive"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ambassify/shiro.git"
+  },
+  "keywords": [
+    "shiro",
+    "apache",
+    "permissions"
+  ],
+  "author": "Gert Sallaerts <gert@ambassify.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ambassify/shiro/issues"
+  },
+  "homepage": "https://github.com/ambassify/shiro#readme",
+  "devDependencies": {
+    "eslint": "^5.1.0",
+    "eslint-config-ambassify": "^1.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2"
+  }
+}
