@@ -1,6 +1,6 @@
 {
   "name": "@ambassify/shiro",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Shiro permission checks in Node.JS",
   "main": "lib/index.js",
   "engines": {
