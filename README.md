@@ -6,7 +6,7 @@ See https://shiro.apache.org/permissions.html
 
 ## Usage
 
-Insall: `npm install --save @ambassify/shiro``
+Insall: `npm install --save @ambassify/shiro`
 
 ```js
 const Shiro = require('@ambassify/shiro');
@@ -17,6 +17,16 @@ permissions.add('update:user');
 
 permissions.check('delete:user'); // --> false
 permissions.check('update:user'); // --> true
+
+console.log(permissions.claims);
+// --> [ 'read:user', 'update:user' ]
+
+const otherPermissions = Shiro.create([ 'read:*' ]);
+const intersection = Shiro.intersection(permissions, otherPermissions);
+
+console.log(intersection.claims);
+// --> [ 'read:user'' ]
+
 ```
 
 ## Contribute
