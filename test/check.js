@@ -4,7 +4,7 @@ const assert = require('assert');
 
 const Shiro = require('../lib');
 
-describe('Shiro', function () {
+describe('# check', function () {
 
     let permissions;
 
@@ -29,6 +29,13 @@ describe('Shiro', function () {
         assert(!permissions.check('b:c'));
         assert(!permissions.check('*'));
         assert(!permissions.check('b:*'));
+    });
+
+    it('star-only permission', function () {
+        permissions.add('*');
+        assert(permissions.check('a'));
+        assert(permissions.check('a:b'));
+        assert(permissions.check('*'));
     });
 
     it('multiple star permission', function () {
