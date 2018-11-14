@@ -46,7 +46,7 @@ describe('# intersection', function () {
         assert.deepEqual(inter.claims, ['a:b']);
     });
 
-    it.only('random intersection', function () {
+    it('random intersection', function () {
         const a = Shiro.create([ '*:b', 'a:*:c' ]);
         const b = Shiro.create([ 'a:*', 'd:b' ]);
         const c = Shiro.create('*');
