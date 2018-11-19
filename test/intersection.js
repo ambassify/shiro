@@ -30,6 +30,14 @@ describe('# intersection', function () {
         assert.deepEqual(inter.claims, [ 'a:b' ]);
     });
 
+    it('star-star intersection', function () {
+        const a = Shiro.create('*');
+        const b = Shiro.create('*');
+
+        const inter = Shiro.intersection(a, b);
+        assert.deepEqual(inter.claims, [ '*' ]);
+    });
+
     it('sub-star intersection', function () {
         const a = Shiro.create('a:b');
         const b = Shiro.create('a:*');
