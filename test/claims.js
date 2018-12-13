@@ -4,6 +4,14 @@ const assert = require('assert');
 
 const Shiro = require('../lib');
 
+function equalScope(a, b, ...args) {
+    assert.deepEqual(
+        Array.isArray(a) ? a.sort() : a,
+        Array.isArray(b) ? b.sort() : b,
+        ...args
+    );
+}
+
 describe('# claims', function () {
 
     let permissions;
@@ -12,14 +20,14 @@ describe('# claims', function () {
 
     it('simple claim', function () {
         permissions.add('a:b');
-        assert.deepEqual(permissions.claims, [ 'a:b' ]);
+        equalScope(permissions.claims, [ 'a:b' ]);
     });
 
     it('multiple claims', function () {
         permissions.add('a:b');
         permissions.add('c:d');
 
-        assert.deepEqual(permissions.claims, [
+        equalScope(permissions.claims, [
             'a:b',
             'c:d'
         ]);
@@ -28,11 +36,11 @@ describe('# claims', function () {
     it('changing claims', function () {
         permissions.add('a:b');
 
-        assert.deepEqual(permissions.claims, ['a:b']);
+        equalScope(permissions.claims, ['a:b']);
 
         permissions.add('c:d');
 
-        assert.deepEqual(permissions.claims, [
+        equalScope(permissions.claims, [
             'a:b',
             'c:d'
         ]);
@@ -42,18 +50,31 @@ describe('# claims', function () {
         permissions.add('a:b');
         permissions.add('a');
 
-        assert.deepEqual(permissions.claims, [ 'a' ]);
+        equalScope(permissions.claims, [ 'a' ]);
     });
 
     it('star claim', function () {
         permissions.add('a:b');
         permissions.add('*');
 
-        assert.deepEqual(permissions.claims, [ '*' ]);
+        equalScope(permissions.claims, [ '*' ]);
     });
 
     it('no claims', function () {
-        assert.deepEqual(permissions.claims, []);
+        equalScope(permissions.claims, []);
     });
+
+    it('should not return duplicate claims', function () {
+        permissions.add([
+            'create:image:b:post:a',
+            'create:image:*:post:a',
+            'read:message:b'
+        ]);
+
+        equalScope(permissions.claims, [
+            'create:image:*:post:a',
+            'read:message:b'
+        ]);
+    })
 
 });
