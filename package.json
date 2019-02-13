@@ -3,10 +3,13 @@
   "version": "1.1.2",
   "description": "Shiro permission checks in Node.JS",
   "main": "lib/index.js",
+  "browser": "build/index.js",
   "engines": {
     "node": "8.x.x"
   },
   "scripts": {
+    "build": "babel lib -d build",
+    "prepack": "npm run build",
     "test": "npm run test:lint && npm run test:unit",
     "test:lint": "eslint --fix .",
     "test:unit": "nyc mocha --recursive"
@@ -27,6 +30,9 @@
   },
   "homepage": "https://github.com/ambassify/shiro#readme",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
     "eslint": "^5.1.0",
     "eslint-config-ambassify": "^1.2.0",
     "mocha": "^5.2.0",
